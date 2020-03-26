@@ -1,6 +1,7 @@
 import os
 import csv
 
+
 csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
 
 dates = []
@@ -26,11 +27,22 @@ with open(csvpath, newline = '') as csvfile:
     increase = max(PandL)
     iindex = PandL.index(increase)
     idate = dates[iindex]
+f = open("Financial_Analysis.txt" , 'w')
+
+print('Financial Analysis', file=f)
+print('------------------------------', file=f)
+print('Total Months:' + str(rowc), file=f)
+print('Total: $' + str(total), file=f)
+print('Average Change: $' + str(average), file=f)
+print('Greatest Increase in Profits: ' + str(idate), file=f)
+print('Greatest Decrease in Profits: ' + str(ddate), file=f)
+
+f.close()
+
 print('Financial Analysis')
-print('-----------------------------')
+print('------------------------------')
 print('Total Months:' + str(rowc))
 print('Total: $' + str(total))
 print('Average Change: $' + str(average))
 print('Greatest Increase in Profits: ' + str(idate))
 print('Greatest Decrease in Profits: ' + str(ddate))
-
