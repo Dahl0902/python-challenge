@@ -10,6 +10,8 @@ profit = 0
 loss = 0
 rowc = 0
 total = 0
+average = 0
+change = 0
 
 with open(csvpath, newline = '') as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ",")
@@ -20,13 +22,17 @@ with open(csvpath, newline = '') as csvfile:
         dates.append(row)
     PandL = list(map(int, PandL))
     total = sum(PandL)
-    average = (total/(rowc-1))
+    first = PandL[0]
+    last = PandL[(rowc - 1)]
+    change = (last - first)
+    average = (change/(rowc-1))
     decrease = min(PandL)
     dindex = PandL.index(decrease)
     ddate = dates[dindex]
     increase = max(PandL)
     iindex = PandL.index(increase)
     idate = dates[iindex]
+average = round(average, 2)
 f = open("Financial_Analysis.txt" , 'w')
 
 print('Financial Analysis', file=f)
